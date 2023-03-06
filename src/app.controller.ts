@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { CreateUserDto } from './dto/user.dto';
+import { BadRequestException, Body, Controller, Get, Header, HttpCode, HttpException, HttpStatus, Param, Post, Redirect } from '@nestjs/common';
+import { ForbiddenException } from './exeption/forbidden.exaption';
+
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getHello() {
+    throw new BadRequestException('Something bad', {cause: new Error(), description: 'Some Error'})
   }
+
+ 
+
 }
