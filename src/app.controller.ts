@@ -5,17 +5,21 @@ import {
   Get,
   Post,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { RoleGuard } from './auth/auth.guard';
+import { LoginInterceptor } from './interceptor/login.interceptor';
+import { CacheInterceptor } from './interceptor/transform.interceptor';
+
 
 @Controller()
 export class AppController {
 
  
   @Post()
-  @UseGuards(RoleGuard)
+  @UseInterceptors(CacheInterceptor)
   async authUser(@Body() userDto: CreateUserDto) {
-    return 'User one'
+   
   }
 
 }
