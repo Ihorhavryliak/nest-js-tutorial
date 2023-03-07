@@ -8,4 +8,6 @@ export class CreateUserDto {
   password: string;
   @IsInt()
   age: number;
+
+  roles: string[]
 }
